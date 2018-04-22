@@ -1,0 +1,44 @@
+[
+	{
+		"name": "Finger",
+		"signalPin": 3,
+		"initPosition": 180,
+		"minPosition": 120,
+		"maxPosition": 180
+	},
+	{
+		"name": "Wrist-I",
+		"signalPin": 5,
+		"initPosition": 90,
+		"minPosition": 0,
+		"maxPosition": 180
+	},
+	{
+		"name": "Wrist-II",
+		"signalPin": 6,
+		"initPosition": 90,
+		"minPosition": 0,
+		"maxPosition": 180
+	},
+	{
+		"name": "Elbow",
+		"signalPin": 9,
+		"initPosition": 90,
+		"minPosition": 0,
+		"maxPosition": 180
+	},
+	{
+		"name": "Shoulder",
+		"signalPin": 10,
+		"initPosition": 90,
+		"minPosition": 0,
+		"maxPosition": 180
+	},
+	{
+		"name": "Base",
+		"signalPin": 11,
+		"initPosition": 90,
+		"minPosition": 0,
+		"maxPosition": 180
+	}
+]
