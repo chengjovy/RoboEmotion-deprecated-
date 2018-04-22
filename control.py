@@ -1,4 +1,4 @@
-
+import sys
 import serial
 
 
@@ -14,7 +14,10 @@ def getUsage():
 	return usage
 
 if __name__ == "__main__":
-	arduino = serial.Serial('/dev/cu.usbmodem14121', 9600)
+	if len(sys.argv) > 1:
+		arduino = serial.Serial(sys.argv[1], 9600)
+	else:
+		arduino = serial.Serial('/dev/cu.usbmodem14111', 9600)
 	while True:
 		command = raw_input(">>> ")
 		if command.lower().startswith("h"):
