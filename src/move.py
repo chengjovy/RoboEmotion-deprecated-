@@ -1,3 +1,4 @@
+import sys
 import json
 
 
@@ -98,14 +99,49 @@ class ServoMove(object):
 
 class Move(object):
 
-	def __init__():
-		pass
+	# finish criteria (pseudo enum)
+	_FINISH_CRITERIA_ANY = 0
+	_FINISH_CRITERIA_ALL = 1
 
-	def loadMoveFromFile(filename):
-		pass
+	def __init__(self, fromServoMoves=None, fromFile=None):
 
-	def getNext():
+		self.servoMoves = []
+
+		if fromServoMoves is not None:
+			if not all(isinstance(sm, ServoMove) for sm in fromServoMoves):
+				raise ValueError('(Move) __init__(): bad argument (fromServoMoves)')
+			self.servoMoves = fromServoMoves
+		elif fromFile is not None:
+			try:
+				fileContent = json.load(open(fromFile, 'r'))
+			except IOError as err:
+				print('cannot open file: %s (%s)' % (fromFile, err))
+				sys.exit(1)
+			except ValueError as err:
+				print('bad JSON file: %s (%s)' % (fromFile, err))
+				sys.exit(1)
+			except:
+				print('error loading file (unknown)')
+				sys.exit(1)
+			if not type(fileContent) == type([]):
+				raise ValueError('not an array (%s)' % (fromFile))
+			self.servoMoves = [ServoMove(**d) for d in fileContent]
+		else:
+			raise ValueError('class Move must be instantiate using a file or an array of ServoMove')
+
+	def getNext(self):
 		"""
 			This function should be called 10 times / sec.
 		"""
-		pass
+		return [s.getNext() for s in self.servoMoves]
+
+	def getNumServos(self):
+		return len(self.servoMoves)
+
+	def isFinished(self, criteria=_FINISH_CRITERIA_ANY):
+		if criteria == Move._FINISH_CRITERIA_ANY:
+			return any(s.isFinished() for s in self.servoMoves)
+		elif criteria == Move._FINISH_CRITERIA_ALL:
+			return all(s.isFinished() for s in self.servoMoves)
+		else:
+			raise ValueError('cannot recognize finish criteria: %s' % (str(criteria)))
