@@ -97,6 +97,12 @@ class ServoMove(object):
 		ret |= (self.type == 'loop' and self.performedTimes > self.totalTimes)
 		return ret
 
+	def reset(self):
+		self.performedTimes = 0
+		self.currentPosition = None
+		self.stepVector = None
+		self.goingForward = None
+
 class Move(object):
 
 	# finish criteria (pseudo enum)
@@ -147,3 +153,7 @@ class Move(object):
 			return all(s.isFinished() for s in self.servoMoves)
 		else:
 			raise ValueError('cannot recognize finish criteria: %s' % (str(criteria)))
+
+	def reset(self):
+		for sm in self.servoMoves:
+			sm.reset()
