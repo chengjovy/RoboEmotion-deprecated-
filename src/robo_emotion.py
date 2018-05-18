@@ -1,6 +1,7 @@
 from __future__ import print_function
 
-import sys, json
+import sys, json, thread
+from time import sleep
 from util import SerialCorrespondent
 from move import Move
 
@@ -17,7 +18,7 @@ class RoboEmotion(object):
 	}
 	_DEFAULT_EMOTION_CONFIG = "robo_emotion_config.json"
 
-	def __init__(self, defaultEmotionConfig=None, serialIdentifier="", baudRate=9600):
+	def __init__(self, defaultEmotionConfig=None):
 		#
 		# initialize _DEFAULT_EMOTION_MOVES
 		#
@@ -31,39 +32,72 @@ class RoboEmotion(object):
 		for emotionName in fileContent:
 			RoboEmotion._DEFAULT_EMOTION_MOVES[emotionName.lower()] = Move(fromServoConfig=fileContent[emotionName])
 		#
-		# initialize SerialCorrespondent
+		# performing
 		#
-		self.serialCorrespondent = SerialCorrespondent(serialIdentifier=serialIdentifier, baudRate=9600)
-		self.serialCorrespondent.connect()
+		self.currentMove = None
+		self.finishCriteria = None
 
-	def perform(self, move, finishCriteria=Move._FINISH_CRITERIA_ALL):
-		print('performing move with criteria = %d' % (finishCriteria))
-		print('this move config has %d servos.' % (move.getNumServos()))
-		
-		positions = move.getNext()
-		print('positions: %s' % (str(positions)))
-		self.serialCorrespondent.write(" ".join(str(pos) for pos in positions))
-		while not move.isFinished(criteria=finishCriteria):
-			positions = move.getNext()
-			print('positions: %s' % (str(positions)))
-			self.serialCorrespondent.write(" ".join(str(pos) for pos in positions))
-
-		print()
+	def perform(self, move, finishCriteria=Move._FINISH_CRITERIA_ALL, noReset=False):
+		if noReset:
+			self.currentMove = move
+		else:
+			move.reset()
+			self.currentMove = move
+		self.finishCriteria = finishCriteria
 
 	def performEmotion(self, emotionName, finishCriteria=Move._FINISH_CRITERIA_ALL):
 		emotionMove = RoboEmotion._DEFAULT_EMOTION_MOVES.get(emotionName.lower())
 		if emotionMove is not None:
-			print('performing %s' % (emotionName.lower()))
-			self.perform(emotionMove, finishCriteria=finishCriteria)
+			emotionMove.reset()
+			self.currentMove = emotionMove
+			self.finishCriteria = finishCriteria
 		else:
 			raise ValueError('cannot recognize this emotion: %s' % (emotionName))
 
+	def getNext(self):
+		if self.currentMove is not None:
+			return self.currentMove.getNext()
+		else:
+			return RoboEmotion._DEFAULT_EMOTION_MOVES['init'].getNext()
 
+	def isFinished(self):
+		return (self.currentMove is None) or (self.currentMove.isFinished(criteria=self.finishCriteria))
+
+def communicate(serialCorrespondent=None):
+	if roboEmotion is not None:
+		lastPositions = None
+		while True:
+			positions = roboEmotion.getNext()
+			if lastPositions is None or lastPositions != positions:
+				lastPositions = positions
+				print(positions)
+				if serialCorrespondent is not None:
+					serialCorrespondnet.write(" ".join([str(p) for p in positions]))
+			sleep(0.1)
 
 if __name__ == "__main__":
-	roboEmotion = RoboEmotion(serialIdentifier=sys.argv[1])
-	"""
-	test the emotions
-	"""
-	for emotionName in RoboEmotion._DEFAULT_EMOTION_MOVES:
-		roboEmotion.performEmotion(emotionName)
+	import tkinter as tk
+	roboEmotion = RoboEmotion()
+	serialCorrespondent = SerialCorrespondent(serialIdentifier="", baudRate=9600)
+	serialCorrespondent.connect()
+
+	root = tk.Tk()
+
+	w = tk.Button(root, text='init', command=lambda: roboEmotion.performEmotion('init'))
+	w.pack(padx=10)
+	w = tk.Button(root, text='happy', command=lambda: roboEmotion.performEmotion('happy'))
+	w.pack(padx=10)
+	w = tk.Button(root, text='sad', command=lambda: roboEmotion.performEmotion('sad'))
+	w.pack(padx=10)
+	w = tk.Button(root, text='fear', command=lambda: roboEmotion.performEmotion('fear'))
+	w.pack(padx=10)
+	w = tk.Button(root, text='anger', command=lambda: roboEmotion.performEmotion('anger'))
+	w.pack(padx=10)
+	w = tk.Button(root, text='surprise', command=lambda: roboEmotion.performEmotion('surprise'))
+	w.pack(padx=10)
+	w = tk.Button(root, text='disgust', command=lambda: roboEmotion.performEmotion('disgust'))
+	w.pack(padx=10)
+
+	thread.start_new_thread(communicate, (None,))
+	# start Tkinter
+	root.mainloop()
