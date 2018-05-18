@@ -103,7 +103,7 @@ class Move(object):
 	_FINISH_CRITERIA_ANY = 0
 	_FINISH_CRITERIA_ALL = 1
 
-	def __init__(self, fromServoMoves=None, fromFile=None):
+	def __init__(self, fromServoMoves=None, fromFile=None, fromServoConfig=None):
 
 		self.servoMoves = []
 
@@ -126,6 +126,8 @@ class Move(object):
 			if not type(fileContent) == type([]):
 				raise ValueError('not an array (%s)' % (fromFile))
 			self.servoMoves = [ServoMove(**d) for d in fileContent]
+		elif fromServoConfig is not None:
+			self.servoMoves = [ServoMove(**d) for d in fromServoConfig]
 		else:
 			raise ValueError('class Move must be instantiate using a file or an array of ServoMove')
 
