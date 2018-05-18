@@ -1,8 +1,36 @@
 {
+	"init": [
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		}
+	],
 	"happy": [
 		{
-			"type": "posture",
-			"startPosition": 90
+			"type": "loop",
+			"startPosition": 45,
+			"endPosition": 135,
+			"speed": "high"
 		},
 		{
 			"type": "posture",
@@ -11,6 +39,38 @@
 		{
 			"type": "posture",
 			"startPosition": 90
+		},
+		{
+			"type": "loop",
+			"startPosition": 90,
+			"endPosition": 120,
+			"speed": "high"
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		}
+	],
+	"sad": [
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "action",
+			"startPosition": 90,
+			"endPosition": 120,
+			"speed": "low"
+		},
+		{
+			"type": "action",
+			"startPosition": 90,
+			"endPosition": 180,
+			"speed": "low"
 		},
 		{
 			"type": "posture",
@@ -24,59 +84,37 @@
 			"type": "action",
 			"startPosition": 90,
 			"endPosition": 180,
-			"speed": "med"
-		}
-	],
-	"sad": [
-		{
-			"type": "posture",
-			"startPosition": 90
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
+			"speed": "low"
 		}
 	],
 	"fear": [
 		{
+			"type": "loop",
+			"startPosition": 60,
+			"endPosition": 120,
+			"speed": "med"
+		},
+		{
 			"type": "posture",
-			"startPosition": 90
+			"startPosition": 45
+		},
+		{
+			"type": "posture",
+			"startPosition": 180
+		},
+		{
+			"type": "posture",
+			"startPosition": 180
 		},
 		{
 			"type": "posture",
 			"startPosition": 90
 		},
 		{
-			"type": "posture",
-			"startPosition": 90
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
+			"type": "loop",
+			"startPosition": 120,
+			"endPosition": 180,
+			"speed": "low"
 		}
 	],
 	"anger": [
@@ -90,7 +128,7 @@
 		},
 		{
 			"type": "posture",
-			"startPosition": 90
+			"startPosition": 180
 		},
 		{
 			"type": "posture",
@@ -101,8 +139,10 @@
 			"startPosition": 90
 		},
 		{
-			"type": "posture",
-			"startPosition": 90
+			"type": "loop",
+			"startPosition": 90,
+			"endPosition": 180,
+			"speed": "high"
 		}
 	],
 	"surprise": [
@@ -119,16 +159,20 @@
 			"startPosition": 90
 		},
 		{
-			"type": "posture",
-			"startPosition": 90
+			"type": "action",
+			"startPosition": 180,
+			"endPosition": 90,
+			"speed": "med"
 		},
 		{
 			"type": "posture",
 			"startPosition": 90
 		},
 		{
-			"type": "posture",
-			"startPosition": 90
+			"type": "action",
+			"startPosition": 180,
+			"endPosition": 90,
+			"speed": "med"
 		}
 	],
 	"disgust": [
@@ -138,19 +182,23 @@
 		},
 		{
 			"type": "posture",
-			"startPosition": 90
+			"startPosition": 45
+		},
+		{
+			"type": "loop",
+			"startPosition": 120,
+			"endPosition": 90,
+			"speed": "med"
 		},
 		{
 			"type": "posture",
 			"startPosition": 90
 		},
 		{
-			"type": "posture",
-			"startPosition": 90
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
+			"type": "loop",
+			"startPosition": 60,
+			"endPosition": 90,
+			"speed": "high"
 		},
 		{
 			"type": "posture",
