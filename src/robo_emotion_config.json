@@ -1,0 +1,160 @@
+{
+	"happy": [
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "action",
+			"startPosition": 90,
+			"endPosition": 180,
+			"speed": "med"
+		}
+	],
+	"sad": [
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		}
+	],
+	"fear": [
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		}
+	],
+	"anger": [
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		}
+	],
+	"surprise": [
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		}
+	],
+	"disgust": [
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		},
+		{
+			"type": "posture",
+			"startPosition": 90
+		}
+	]
+}
