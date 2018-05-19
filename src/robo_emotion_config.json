@@ -28,8 +28,8 @@
 	"happy": [
 		{
 			"type": "loop",
-			"startPosition": 45,
-			"endPosition": 135,
+			"startPosition": 60,
+			"endPosition": 120,
 			"speed": "high"
 		},
 		{
@@ -43,7 +43,7 @@
 		{
 			"type": "loop",
 			"startPosition": 90,
-			"endPosition": 120,
+			"endPosition": 135,
 			"speed": "high"
 		},
 		{
@@ -83,28 +83,28 @@
 		{
 			"type": "action",
 			"startPosition": 90,
-			"endPosition": 180,
+			"endPosition": 0,
 			"speed": "low"
 		}
 	],
 	"fear": [
 		{
 			"type": "loop",
-			"startPosition": 60,
-			"endPosition": 120,
-			"speed": "med"
+			"startPosition": 75,
+			"endPosition": 105,
+			"speed": "low"
 		},
 		{
 			"type": "posture",
-			"startPosition": 45
+			"startPosition": 135
 		},
 		{
 			"type": "posture",
-			"startPosition": 180
+			"startPosition": 150
 		},
 		{
 			"type": "posture",
-			"startPosition": 180
+			"startPosition": 0
 		},
 		{
 			"type": "posture",
@@ -112,8 +112,8 @@
 		},
 		{
 			"type": "loop",
-			"startPosition": 120,
-			"endPosition": 180,
+			"startPosition": 60,
+			"endPosition": 0,
 			"speed": "low"
 		}
 	],
@@ -128,11 +128,7 @@
 		},
 		{
 			"type": "posture",
-			"startPosition": 180
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
+			"startPosition": 150
 		},
 		{
 			"type": "posture",
@@ -140,9 +136,15 @@
 		},
 		{
 			"type": "loop",
-			"startPosition": 90,
+			"startPosition": 0,
 			"endPosition": 180,
-			"speed": "high"
+			"speed": "med"
+		},
+		{
+			"type": "loop",
+			"startPosition": 0,
+			"endPosition": 90,
+			"speed": "med"
 		}
 	],
 	"surprise": [
@@ -160,7 +162,7 @@
 		},
 		{
 			"type": "action",
-			"startPosition": 180,
+			"startPosition": 0,
 			"endPosition": 90,
 			"speed": "med"
 		},
@@ -169,40 +171,38 @@
 			"startPosition": 90
 		},
 		{
-			"type": "action",
-			"startPosition": 180,
-			"endPosition": 90,
+			"type": "loop",
+			"startPosition": 90,
+			"endPosition": 30,
 			"speed": "med"
 		}
 	],
 	"disgust": [
 		{
+			"type": "action",
+			"startPosition": 90,
+			"endPosition": 180,
+			"speed": "low"
+		},
+		{
+			"type": "posture",
+			"startPosition": 135
+		},
+		{
+			"type": "posture",
+			"startPosition": 165
+		},
+		{
+			"type": "posture",
+			"startPosition": 15
+		},
+		{
 			"type": "posture",
 			"startPosition": 90
 		},
 		{
 			"type": "posture",
-			"startPosition": 45
-		},
-		{
-			"type": "loop",
-			"startPosition": 120,
-			"endPosition": 90,
-			"speed": "med"
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
-		},
-		{
-			"type": "loop",
-			"startPosition": 60,
-			"endPosition": 90,
-			"speed": "high"
-		},
-		{
-			"type": "posture",
-			"startPosition": 90
+			"startPosition": 15
 		}
 	]
 }
