@@ -3,7 +3,7 @@
 Servo servos[6];
 // servo order: Finder(0) - Base(5)
 int servoPins[6] = {3, 5, 6, 9, 10, 11};
-int servoPositions[6] = {180, 90, 90, 90, 90, 0};
+int servoPositions[6] = {90, 90, 90, 90, 90, 90};
 String cmd;
 
 void setup() {
@@ -48,7 +48,7 @@ void loop() {
       Serial.println(value);
       startIndex = spaceIndex + 1;
     }
-    Serial.println("done.");
+//    Serial.println("done.");
   }
 }
 
