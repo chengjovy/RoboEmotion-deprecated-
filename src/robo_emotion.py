@@ -68,17 +68,21 @@ def communicate(serialCorrespondent=None):
 		lastPositions = None
 		while True:
 			positions = roboEmotion.getNext()
+			positions = " ".join([str(p) for p in positions])
 			if lastPositions is None or lastPositions != positions:
 				lastPositions = positions
 				print(positions)
 				if serialCorrespondent is not None:
-					serialCorrespondnet.write(" ".join([str(p) for p in positions]))
+					serialCorrespondent.write(positions + "\n")
 			sleep(0.1)
 
 if __name__ == "__main__":
 	import tkinter as tk
 	roboEmotion = RoboEmotion()
-	serialCorrespondent = SerialCorrespondent(serialIdentifier="", baudRate=9600)
+	try:
+		serialCorrespondent = SerialCorrespondent(serialIdentifier=sys.argv[1], baudRate=9600)
+	except:
+		serialCorrespondent = SerialCorrespondent(serialIdentifier="/dev/cu.usbmodem95", baudRate=9600)
 	serialCorrespondent.connect()
 
 	root = tk.Tk()
@@ -98,6 +102,6 @@ if __name__ == "__main__":
 	w = tk.Button(root, text='disgust', command=lambda: roboEmotion.performEmotion('disgust'))
 	w.pack(padx=10)
 
-	thread.start_new_thread(communicate, (None,))
+	thread.start_new_thread(communicate, (serialCorrespondent,))
 	# start Tkinter
 	root.mainloop()
