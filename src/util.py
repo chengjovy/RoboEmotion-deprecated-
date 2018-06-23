@@ -1,6 +1,25 @@
+from abc import ABCMeta, abstractmethod
 import serial
 
-class SerialCorrespondent(object):
+class Correspondent(object):
+	__metaclass__ = ABCMeta
+
+	def __init__(self):
+		pass
+
+	@abstractmethod
+	def connect(self):
+		pass
+
+	@abstractmethod
+	def isConnected(self):
+		pass
+
+	@abstractmethod
+	def write(self, msg='', end=''):
+		pass
+
+class SerialCorrespondent(Correspondent):
 
 	def __init__(self, serialIdentifier=None, baudRate=None):
 		self.serialIdentifier = serialIdentifier
